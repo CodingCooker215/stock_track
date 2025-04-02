@@ -6,7 +6,7 @@ hm={}
 unchanged={}
 curre={}
 profit=[]
-
+totprofit=[]
 #function to get data from ticker
 def get_curr(symbol):
     ticker=yf.Ticker(symbol)
@@ -17,7 +17,6 @@ def lister(csv_name):
     name=[]
     price=[]
     count=[]
-    totprofit=[]
     current_price_of_stock=[]
     with open(csv_name) as doc:
         purchased=csv.reader(doc, delimiter=",")
@@ -33,7 +32,8 @@ def lister(csv_name):
     for i in range(len(name)):
         qprofit=float(current_price_of_stock[i])-float(price[i])
         profit.append(qprofit)
-        totprofit.append(float(count[i])*qprofit)
+        x=float(count[i])*qprofit
+        totprofit.append(x)
         hm[qprofit]=name[i]
         unchanged[name[i]]=price[i]
         curre[name[i]]=current_price_of_stock[i]
@@ -49,8 +49,10 @@ def sorter(array):
         organized[hm[array[i]]]=array[i]
     return organized
 
-lister("purchased_stocks.csv")
+lister("trial_stock.csv")
 print("\n \n \n \n \n \n \n \n \n \n \n \n ")
 print(f"purchase price: {unchanged}")
 print(f"current price: {curre}")
 print(f"Organized Profit per Stock: {sorter(profit)}")
+print(totprofit)
+print(f"total profit: {sum(totprofit)}")
