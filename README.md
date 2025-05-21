@@ -1,5 +1,5 @@
 # stock_track
-Very quick project I did (less than an hour) to track my current stock profits. 
+Dumb project to track stocks
 
 Uses bubble sort to sort algo (I know it's not the most efficient but it works well for my purposes)
 
